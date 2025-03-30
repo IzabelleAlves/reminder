@@ -69,3 +69,12 @@ button:focus {
   border: 2px solid #6d28d9;
   box-shadow: 0 0 10px rgba(109, 40, 217, 0.5);
 }
+
+/* #resultado {
+  padding: 10px 15px;
+  border: 1px black solid;
+  border-radius: 8px;
+} */
+/* add lixeira p remover, quando remove tira do array la*/
+/* se eu marcar o check dos ativos como ok, ele sai de la e entra nos 'Lembretes finalizados', riscando tb isso dos lembretes add */
+/* add um readme */
