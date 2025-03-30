@@ -9,6 +9,7 @@ document
   .getElementById("meuFormulario")
   .addEventListener("submit", function (event) {
     event.preventDefault();
+    // this.reset();
 
     const nome = document.getElementById("nomeInput").value;
     const tempo = document.getElementById("tempoLembrete").value;
@@ -48,4 +49,6 @@ document
 
       lembreteElement.appendChild(novoLembrete);
     }, tmpMilisegundo);
+
+    document.getElementById("meuFormulario").reset();
   });
