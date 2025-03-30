@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/style.css" />
+    <title>Lembretes</title>
+  </head>
+  <body>
+    <main>
+      <h1>Lembretes</h1>
+      <h3>
+        Digite o que você quer delegar da sua memória e nós avisaremos quando
+        for o tempo certo!!
+      </h3>
+
+      <form id="meuFormulario">
+        <label for="nomeInput">Digite o que você quer ser lembrado</label>
+        <input
+          type="text"
+          id="nomeInput"
+          name=""
+          placeholder="Digite aqui..."
+        />
+
+        <label for="tempoLembrete"
+          >Digite daqui quantos segundos você quer ser lembrado</label
+        >
+        <input
+          type="number"
+          name="tempoLembrete"
+          id="tempoLembrete"
+          placeholder="Digite aqui..."
+        />
+        <button type="submit">Enviar</button>
+      </form>
+
+      <h1 id="atvd"></h1>
+      <p id="resultado"></p>
+
+      <section>
+        <h1 id="reminder"></h1>
+        <div id="lembrete"></div>
+      </section>
+    </main>
+    <script src="script.js"></script>
+  </body>
+</html>
