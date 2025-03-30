@@ -4,34 +4,39 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="/style.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Tektur:wght@400;500;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+
     <title>Lembretes</title>
   </head>
   <body>
     <main>
-      <h1>Lembretes</h1>
-      <h3>
-        Digite o que você quer delegar da sua memória e nós avisaremos quando
-        for o tempo certo!!
-      </h3>
+      <h1 id="titulo">My Reminders</h1>
+      <h3>Digite algo que deseja lembrar e nós avisaremos no momento certo!</h3>
 
       <form id="meuFormulario">
-        <label for="nomeInput">Digite o que você quer ser lembrado</label>
+        <label for="nomeInput">O que você deseja lembrar?</label>
         <input
           type="text"
           id="nomeInput"
           name=""
           placeholder="Digite aqui..."
+          required
         />
 
         <label for="tempoLembrete"
-          >Digite daqui quantos segundos você quer ser lembrado</label
+          >Em quantos minutos deseja ser lembrado?</label
         >
         <input
           type="number"
           name="tempoLembrete"
           id="tempoLembrete"
           placeholder="Digite aqui..."
+          required
         />
+
         <button type="submit">Enviar</button>
       </form>
 
