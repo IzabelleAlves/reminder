@@ -21,6 +21,9 @@ document
     adicionados.innerText = "Lembretes adicionados:";
 
     const resultado = document.getElementById("resultado");
+    resultado.style.padding = "10px 15px";
+    resultado.style.border = "1px black solid";
+    resultado.style.borderRadius = "8px";
     resultado.innerHTML = "";
     arrayAtvd.forEach((atividade, index) => {
       resultado.innerHTML += `<p><strong>Atividade</strong>: ${atividade}, <strong>Daqui a:</strong> ${timerArrayAtvd[index]} minutos</p>`;
