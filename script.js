@@ -18,12 +18,12 @@ document
     timerArrayAtvd.push(tempo);
 
     const adicionados = document.getElementById("atvd");
-    adicionados.innerText = " Adicionados:";
+    adicionados.innerText = "Lembretes adicionados:";
 
     const resultado = document.getElementById("resultado");
     resultado.innerHTML = "";
     arrayAtvd.forEach((atividade, index) => {
-      resultado.innerHTML += `<p>Atividade: ${atividade}, Daqui a: ${timerArrayAtvd[index]} minutos</p>`;
+      resultado.innerHTML += `<p><strong>Atividade</strong>: ${atividade}, <strong>Daqui a:</strong> ${timerArrayAtvd[index]} minutos</p>`;
     });
 
     const tmpMilisegundo = tempo * 60000;
@@ -52,3 +52,56 @@ document
 
     document.getElementById("meuFormulario").reset();
   });
+
+function ajustarResponsividade() {
+  const larguraTela = window.innerWidth;
+  const titulo1 = document.getElementById("titulo");
+  const titulo = document.getElementById("titulo2");
+  const form = document.getElementById("meuFormulario");
+  const inputs = document.querySelectorAll("input");
+  const button = document.querySelector("button");
+
+  if (larguraTela <= 800) {
+    titulo.style.width = "320px";
+    titulo.style.display = "flex";
+    titulo.style.textAlign = "center";
+    titulo.style.padding = "10px";
+
+    form.style.width = "320px";
+    form.style.padding = "10px";
+
+    inputs.forEach((input) => {
+      input.style.width = "300px";
+      input.style.fontSize = "14px";
+      input.style.padding = "8px";
+    });
+
+    button.style.width = "320px";
+    button.style.fontSize = "15px";
+    button.style.padding = "10px";
+    button.style.marginTop = "10px";
+  } else if (larguraTela <= 1200) {
+    titulo.style.display = "flex";
+    titulo.style.textAlign = "center";
+    titulo.style.justifyContent = "center";
+
+    form.style.width = "700px";
+    form.style.padding = "70px";
+
+    inputs.forEach((input) => {
+      // input.style.width = "480px";
+      input.style.fontSize = "16px";
+      input.style.padding = "10px";
+    });
+
+    button.style.width = "700px";
+    button.style.fontSize = "17px";
+    button.style.padding = "12px";
+    button.style.marginTop = "10px";
+  }
+}
+
+// Executa ao carregar e ao redimensionar a tela
+// window.addEventListener("load", ajustarResponsividade);
+// window.addEventListener("resize", ajustarResponsividade);
+ajustarResponsividade();
