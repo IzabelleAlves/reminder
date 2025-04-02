@@ -2,8 +2,8 @@ const lembrete = (callback, delay) => {
   setTimeout(callback, delay);
 };
 
-let arrayAtvd = [];
-let timerArrayAtvd = [];
+let arrayLembretes = [];
+let timerArrayLembretes = [];
 
 document
   .getElementById("meuFormulario")
@@ -14,19 +14,21 @@ document
     const nome = document.getElementById("nomeInput").value;
     const tempo = document.getElementById("tempoLembrete").value;
 
-    arrayAtvd.push(nome);
-    timerArrayAtvd.push(tempo);
+    arrayLembretes.push(nome);
+    timerArrayLembretes.push(tempo);
 
-    const adicionados = document.getElementById("atvd");
-    adicionados.innerText = "Lembretes adicionados:";
+    const lembretesAdd = document.getElementById("lembretesAdicionados");
+    lembretesAdd.innerText = "Lembretes adicionados:";
 
-    const resultado = document.getElementById("resultado");
-    resultado.style.padding = "10px 15px";
-    resultado.style.border = "1px black solid";
-    resultado.style.borderRadius = "8px";
-    resultado.innerHTML = "";
-    arrayAtvd.forEach((atividade, index) => {
-      resultado.innerHTML += `<p><strong>Atividade</strong>: ${atividade}, <strong>Daqui a:</strong> ${timerArrayAtvd[index]} minutos</p>`;
+    const lembreteAddRenderizado = document.getElementById(
+      "lembreteAddRenderizado"
+    );
+    lembreteAddRenderizado.style.padding = "10px 15px";
+    lembreteAddRenderizado.style.border = "1px black solid";
+    lembreteAddRenderizado.style.borderRadius = "8px";
+    lembreteAddRenderizado.innerHTML = "";
+    arrayLembretes.forEach((atividade, index) => {
+      lembreteAddRenderizado.innerHTML += `<p><strong>Atividade</strong>: ${atividade}, <strong>Daqui a:</strong> ${timerArrayLembretes[index]} minutos</p>`;
     });
 
     const tmpMilisegundo = tempo * 60000;
