@@ -46,7 +46,7 @@ input::placeholder {
   font-style: italic;
 }
 
-button {
+.button-submit {
   background: #6d28d9;
   color: white;
   padding: 12px 30px;
@@ -56,24 +56,56 @@ button {
   cursor: pointer;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   transition: all 0.3s ease;
-  margin-bottom: 3rem;
+  margin-bottom: 2rem;
 }
 
-button:hover {
+.button-submit:hover {
   background: #5903e4;
   transform: scale(1.05);
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
 }
 
-button:focus {
+.button-submit:focus {
   border: 2px solid #6d28d9;
   box-shadow: 0 0 10px rgba(109, 40, 217, 0.5);
+}
+
+.lembreteAddRenderizado {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.lembrete-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
 }
 
 ul {
   display: flex;
   flex-direction: column;
   gap: 8px;
+  padding: 0px;
+}
+
+li {
+  flex-grow: 1;
+  list-style: none;
+  padding: 0.7rem;
+  background-color: rgb(175, 174, 174);
+  border-radius: 8px;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.icon-lembrete {
+  padding: 0.9rem;
+  background-color: rgb(175, 174, 174);
+  border-radius: 8px;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+  border: none;
+  cursor: pointer;
 }
 /* #resultado {
   padding: 10px 15px;
