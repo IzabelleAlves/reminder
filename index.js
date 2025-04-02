@@ -111,3 +111,21 @@ document
       }
     }, tmpMilisegundo);
   });
+
+function ajustarFontesLembretes() {
+  let larguraTela = window.innerWidth;
+  let lembretes = document.querySelectorAll("#lembreteAddRenderizado li");
+
+  lembretes.forEach((lembrete) => {
+    if (larguraTela <= 800) {
+      lembrete.style.fontSize = "0.85rem";
+    } else if (larguraTela <= 1200) {
+      lembrete.style.fontSize = "0.95rem";
+    } else {
+      lembrete.style.fontSize = "1rem";
+    }
+  });
+}
+
+ajustarFontesLembretes();
+window.addEventListener("resize", ajustarFontesLembretes);
