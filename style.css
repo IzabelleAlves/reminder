@@ -1,27 +1,43 @@
-html {
-  display: flex;
-  justify-content: center;
-  margin: 0rem;
-  padding: 0rem;
-  font-family: "Tektur", sans-serif;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-/* .bloco1 {
-  background-color: #8b5cf6;
-  padding: 2rem;
-  border-radius: 0.5rem;
-  width: 30rem;
-  height: 30rem;
-} */
-
+html,
 body {
-  background-color: rgb(159, 160, 159);
+  font-family: "Tektur", sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 80vh;
+  padding: 20px;
+  background-color: #cecece;
+}
+
+main {
+  background: #ffffff;
+  padding: 2rem;
+  border-radius: 1rem;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  width: 150%;
+  max-width: 40rem;
 }
 
 #titulo {
-  display: flex;
-  justify-content: center;
-  margin-bottom: 3rem;
+  text-align: center;
+  color: #6d28d9;
+  margin-bottom: 1rem;
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  margin-top: 0.3rem;
+}
+
+#titulo2 {
+  text-align: center;
+  color: #6d6d6d;
+  font-size: 0.9rem;
+  margin-bottom: 2rem;
 }
 
 #meuFormulario {
@@ -30,11 +46,22 @@ body {
   gap: 1rem;
 }
 
+#titulo2 {
+  font-size: 1rem;
+  color: 333;
+  margin-bottom: 2rem;
+}
+
+label {
+  font-size: 0.9rem;
+  font-weight: bold;
+  color: #4a4a4a;
+}
+
 input {
-  max-width: 100rem;
   padding: 0.6rem;
   font-size: 1rem;
-  border: 0.125rem solid #8b5cf6;
+  border: 1px solid #8b5cf6;
   border-radius: 0.6rem;
   outline: none;
   transition: all 0.3s ease-in-out;
@@ -42,42 +69,31 @@ input {
 
 input:focus {
   border-color: #6d28d9;
-  box-shadow: 0 0 10px rgba(109, 40, 217, 0.5);
-}
-
-input::placeholder {
-  color: #a3a3a3;
-  font-style: italic;
+  box-shadow: 0 0 5px rgba(109, 40, 217, 0.3);
 }
 
 .button-submit {
   background: #6d28d9;
   color: white;
-  padding: 12px 30px;
-  font-size: 1.1rem;
+  padding: 12px;
+  font-size: 1rem;
   border: none;
   border-radius: 0.6rem;
   cursor: pointer;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   transition: all 0.3s ease;
-  margin-bottom: 2rem;
 }
 
 .button-submit:hover {
   background: #5903e4;
   transform: scale(1.05);
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
 }
 
-.button-submit:focus {
-  border: 2px solid #6d28d9;
-  box-shadow: 0 0 10px rgba(109, 40, 217, 0.5);
-}
-
-.lembreteAddRenderizado {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
+#lembretesAdicionados,
+#reminder {
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  font-size: 1.5rem;
+  color: #6d6d6d;
 }
 
 .lembrete-container {
@@ -98,24 +114,25 @@ li {
   flex-grow: 1;
   list-style: none;
   padding: 0.7rem;
-  background-color: rgb(175, 174, 174);
+  background-color: #ae83f3;
   border-radius: 8px;
   box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
 }
 
 .icon-lembrete {
   padding: 0.9rem;
-  background-color: rgb(175, 174, 174);
+  background-color: #ae83f3;
   border-radius: 8px;
   box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
   border: none;
   cursor: pointer;
 }
-/* #resultado {
-  padding: 10px 15px;
-  border: 1px black solid;
-  border-radius: 8px;
-} */
-/* add lixeira p remover, quando remove tira do array la*/
-/* se eu marcar o check dos ativos como ok, ele sai de la e entra nos 'Lembretes finalizados', riscando tb isso dos lembretes add */
-/* add um readme */
+
+.icon-lembrete:hover {
+  transform: scale(1.1);
+  transition: transform 0.2s ease-in-out;
+}
+.isCompleted {
+  text-decoration: line-through;
+  color: gray;
+}
