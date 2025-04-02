@@ -1,20 +1,3 @@
-// arrayLembretes.lembretes.forEach((lembrete) => {
-//   let container = document.createElement("div");
-//   container.classList.add("lembrete-container");
-
-//   let li = document.createElement("li");
-//   li.innerHTML = `A atividade: <strong>${lembrete.atividade}</strong> será notificada em: <strong>${lembrete.tempoMinuto} minutos</strong>`;
-
-//   let icon = document.createElement("button");
-//   icon.innerHTML = '<i class="fa-solid fa-trash"></i>';
-//   icon.classList.add("icon-lembrete");
-
-//   container.appendChild(li);
-//   container.appendChild(icon);
-
-//   listaLembretesRenderizados.appendChild(container);
-// });
-
 const alertaLembrete = (callback, delay) => {
   setTimeout(callback, delay);
 };
