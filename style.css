@@ -6,8 +6,12 @@ html {
   font-family: "Tektur", sans-serif;
 }
 
-/* main {
-  border: 0.1rem saddlebrown solid;
+/* .bloco1 {
+  background-color: #8b5cf6;
+  padding: 2rem;
+  border-radius: 0.5rem;
+  width: 30rem;
+  height: 30rem;
 } */
 
 body {
@@ -37,7 +41,7 @@ input {
 }
 
 input:focus {
-  border-color: #6d28d9; /* Roxo mais escuro */
+  border-color: #6d28d9;
   box-shadow: 0 0 10px rgba(109, 40, 217, 0.5);
 }
 
