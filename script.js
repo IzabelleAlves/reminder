@@ -1,112 +1,131 @@
-const lembrete = (callback, delay) => {
+// arrayLembretes.lembretes.forEach((lembrete) => {
+//   let container = document.createElement("div");
+//   container.classList.add("lembrete-container");
+
+//   let li = document.createElement("li");
+//   li.innerHTML = `A atividade: <strong>${lembrete.atividade}</strong> será notificada em: <strong>${lembrete.tempoMinuto} minutos</strong>`;
+
+//   let icon = document.createElement("button");
+//   icon.innerHTML = '<i class="fa-solid fa-trash"></i>';
+//   icon.classList.add("icon-lembrete");
+
+//   container.appendChild(li);
+//   container.appendChild(icon);
+
+//   listaLembretesRenderizados.appendChild(container);
+// });
+
+const alertaLembrete = (callback, delay) => {
   setTimeout(callback, delay);
 };
 
-let arrayLembretes = [];
-let timerArrayLembretes = [];
+let arrayLembretes = {
+  lembretes: [{}],
+};
 
 document
   .getElementById("meuFormulario")
   .addEventListener("submit", function (event) {
     event.preventDefault();
-    // this.reset();
 
-    const nome = document.getElementById("nomeInput").value;
-    const tempo = document.getElementById("tempoLembrete").value;
+    const nomeLembrete = document.getElementById("nomeInput").value;
+    const tempoLembrete = document.getElementById("tempoLembrete").value;
 
-    arrayLembretes.push(nome);
-    timerArrayLembretes.push(tempo);
+    if (!nomeLembrete.trim() || !tempoLembrete.trim()) return;
 
-    const lembretesAdd = document.getElementById("lembretesAdicionados");
-    lembretesAdd.innerText = "Lembretes adicionados:";
+    let novoLembrete = {
+      id: arrayLembretes.lembretes.length,
+      atividade: nomeLembrete,
+      tempoMinuto: parseInt(tempoLembrete, 10),
+      isCompleted: false,
+    };
 
-    const lembreteAddRenderizado = document.getElementById(
-      "lembreteAddRenderizado"
+    if (Object.keys(arrayLembretes.lembretes[0]).length === 0) {
+      arrayLembretes.lembretes[0] = novoLembrete;
+    } else {
+      arrayLembretes.lembretes.push(novoLembrete);
+    }
+
+    const titleLembretesAdicionados = document.getElementById(
+      "lembretesAdicionados"
     );
-    lembreteAddRenderizado.style.padding = "10px 15px";
-    lembreteAddRenderizado.style.border = "1px black solid";
-    lembreteAddRenderizado.style.borderRadius = "8px";
-    lembreteAddRenderizado.innerHTML = "";
-    arrayLembretes.forEach((atividade, index) => {
-      lembreteAddRenderizado.innerHTML += `<p><strong>Atividade</strong>: ${atividade}, <strong>Daqui a:</strong> ${timerArrayLembretes[index]} minutos</p>`;
+    titleLembretesAdicionados.innerHTML = "Lembretes adicionados:";
+
+    let container = document.createElement("div");
+    container.classList.add("lembrete-container");
+
+    let li = document.createElement("li");
+    li.innerHTML = `A atividade: <strong>${novoLembrete.atividade}</strong> será notificada em: <strong>${novoLembrete.tempoMinuto} minutos</strong>`;
+
+    let icon = document.createElement("button");
+    icon.innerHTML = '<i class="fa-solid fa-trash"></i>';
+    icon.classList.add("icon-lembrete");
+
+    icon.addEventListener("click", () => {
+      container.remove();
+      arrayLembretes.lembretes = arrayLembretes.lembretes.filter(
+        (lembrete) => lembrete.id !== novoLembrete.id
+      );
+
+      if (arrayLembretes.lembretes.length === 0) {
+        titleLembretesAdicionados.innerHTML = "";
+        arrayLembretes.lembretes = [{}];
+      }
     });
 
-    const tmpMilisegundo = tempo * 60000;
+    container.appendChild(li);
+    container.appendChild(icon);
+    document.getElementById("lembreteAddRenderizado").appendChild(container);
 
-    lembrete(() => {
+    document.getElementById("nomeInput").value = "";
+    document.getElementById("tempoLembrete").value = "";
+
+    const tmpMilisegundo = novoLembrete.tempoMinuto * 60000;
+
+    alertaLembrete(() => {
       const reminder = document.getElementById("reminder");
       reminder.innerText = "Lembretes Ativos:";
 
       const lembreteElement = document.getElementById("lembrete");
 
-      const novoLembrete = document.createElement("div");
-      novoLembrete.id = "divNovoLembrete";
+      const lembreteAtivo = arrayLembretes.lembretes.find(
+        (l) => l.id === novoLembrete.id
+      );
 
-      const checkbox = document.createElement("input");
-      checkbox.type = "checkbox";
-      checkbox.id = `lembrete-${nome}`;
+      if (lembreteAtivo) {
+        const divLembrete = document.getElementById("lembrete");
+        const textoLembrete = document.createElement("li");
+        textoLembrete.classList.add("lembreteAtivo");
+        textoLembrete.innerText = `A atividade: ${lembreteAtivo.atividade} precisa ser feita agora!`;
 
-      const textoLembrete = document.createElement("span");
-      textoLembrete.innerText = `${nome}`;
+        lembreteElement.appendChild(textoLembrete);
+        textoLembrete.addEventListener("click", () => {
+          lembretes.isCompleted = !isCompleted;
 
-      novoLembrete.appendChild(checkbox);
-      novoLembrete.appendChild(textoLembrete);
+          if (isCompleted) {
+            textoLembrete.classList.toggle("isCompleted");
+          }
+        });
 
-      lembreteElement.appendChild(novoLembrete);
+        divLembrete.appendChild(divLembrete);
+      }
     }, tmpMilisegundo);
-
-    document.getElementById("meuFormulario").reset();
   });
 
-function ajustarResponsividade() {
-  const larguraTela = window.innerWidth;
-  const titulo1 = document.getElementById("titulo");
-  const titulo = document.getElementById("titulo2");
-  const form = document.getElementById("meuFormulario");
-  const inputs = document.querySelectorAll("input");
-  const button = document.querySelector("button");
+function ajustarFontesLembretes() {
+  let larguraTela = window.innerWidth;
+  let lembretes = document.querySelectorAll("#lembreteAddRenderizado li");
 
-  if (larguraTela <= 800) {
-    titulo.style.width = "320px";
-    titulo.style.display = "flex";
-    titulo.style.textAlign = "center";
-    titulo.style.padding = "10px";
-
-    form.style.width = "320px";
-    form.style.padding = "10px";
-
-    inputs.forEach((input) => {
-      input.style.width = "300px";
-      input.style.fontSize = "14px";
-      input.style.padding = "8px";
-    });
-
-    button.style.width = "320px";
-    button.style.fontSize = "15px";
-    button.style.padding = "10px";
-    button.style.marginTop = "10px";
-  } else if (larguraTela <= 1200) {
-    titulo.style.display = "flex";
-    titulo.style.textAlign = "center";
-    titulo.style.justifyContent = "center";
-
-    form.style.width = "700px";
-    form.style.padding = "70px";
-
-    inputs.forEach((input) => {
-      // input.style.width = "480px";
-      input.style.fontSize = "16px";
-      input.style.padding = "10px";
-    });
-
-    button.style.width = "700px";
-    button.style.fontSize = "17px";
-    button.style.padding = "12px";
-    button.style.marginTop = "10px";
-  }
+  lembretes.forEach((lembrete) => {
+    if (larguraTela <= 800) {
+      lembrete.style.fontSize = "0.85rem";
+    } else if (larguraTela <= 1200) {
+      lembrete.style.fontSize = "0.95rem";
+    } else {
+      lembrete.style.fontSize = "1rem";
+    }
+  });
 }
 
-// Executa ao carregar e ao redimensionar a tela
-// window.addEventListener("load", ajustarResponsividade);
-// window.addEventListener("resize", ajustarResponsividade);
-ajustarResponsividade();
+ajustarFontesLembretes();
+window.addEventListener("resize", ajustarFontesLembretes);
