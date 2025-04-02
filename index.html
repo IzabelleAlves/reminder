@@ -5,6 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="/style.css" />
     <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+    <link
       href="https://fonts.googleapis.com/css2?family=Tektur:wght@400;500;600;700;800;900&display=swap"
       rel="stylesheet"
     />
@@ -39,11 +43,13 @@
           required
         />
 
-        <button type="submit">Enviar</button>
+        <button class="button-submit" type="submit">Enviar</button>
       </form>
 
       <h2 id="lembretesAdicionados">Lembretes adicionados:</h2>
-      <ul id="lembreteAddRenderizado"></ul>
+      <div class="lembreteAddRenderizado">
+        <ul id="lembreteAddRenderizado"></ul>
+      </div>
 
       <section>
         <h1 id="reminder"></h1>
