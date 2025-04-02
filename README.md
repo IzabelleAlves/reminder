@@ -1,8 +1,8 @@
 # My Reminder
 
-![My Reminder](https://my-reminder1000.netlify.app/)
-
 My Reminder é uma aplicação projetada para ajudar os usuários a gerenciar suas tarefas e compromissos de forma simples e eficiente.
+
+- Acesse o site: [My Reminder](https://my-reminder1000.netlify.app/)
 
 ## ✨ Funcionalidades
 
@@ -11,9 +11,13 @@ My Reminder é uma aplicação projetada para ajudar os usuários a gerenciar su
 
 ## ⚖️ Como Usar
 
-1. Acesse o site: [My Reminder](https://my-reminder1000.netlify.app/)
-2. Adicione seus lembretes preenchendo o formulário
-3. Gerencie seus lembretes conforme necessário
+### 1️⃣ Clone o repositório
+
+Para baixar o projeto localmente, abra o terminal e execute o seguinte comando:
+
+```bash
+git clone https://github.com/seuusuario/my-reminder.git
+```
 
 ## ✨ Melhorias Futuras
 
