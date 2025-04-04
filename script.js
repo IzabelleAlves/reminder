@@ -76,21 +76,23 @@ document
       );
 
       if (lembreteAtivo) {
-        const divLembrete = document.getElementById("lembrete");
         const textoLembrete = document.createElement("li");
         textoLembrete.classList.add("lembreteAtivo");
         textoLembrete.innerText = `A atividade: ${lembreteAtivo.atividade} precisa ser feita agora!`;
 
-        lembreteElement.appendChild(textoLembrete);
-        textoLembrete.addEventListener("click", () => {
-          lembretes.isCompleted = !isCompleted;
+        if (lembreteAtivo.isCompleted) {
+          textoLembrete.classList.add("isCompleted");
+        }
 
-          if (isCompleted) {
-            textoLembrete.classList.toggle("isCompleted");
-          }
+        textoLembrete.addEventListener("click", () => {
+          console.log("Clicou no elemento");
+
+          lembreteAtivo.isCompleted = !lembreteAtivo.isCompleted;
+
+          textoLembrete.classList.toggle("isCompleted");
         });
 
-        divLembrete.appendChild(divLembrete);
+        lembreteElement.appendChild(textoLembrete);
       }
     }, tmpMilisegundo);
   });
