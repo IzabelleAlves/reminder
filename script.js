@@ -3,8 +3,58 @@ const alertaLembrete = (callback, delay) => {
 };
 
 let arrayLembretes = {
-  lembretes: [{}],
+  lembretes: [
+    {
+      id: 1,
+      atividade: "Correr",
+      tempoMinuto: 10,
+      isCompleted: false,
+    },
+  ],
 };
+
+function renderizarLembretes() {
+  const lembreteContainer = document.getElementById("lembreteAddRenderizado");
+  lembreteContainer.innerHTML = ""; // Limpa os lembretes antes de renderizar
+
+  arrayLembretes.lembretes.forEach((lembrete) => {
+    let container = document.createElement("div");
+    container.classList.add("lembrete-container");
+
+    let li = document.createElement("li");
+    li.innerHTML = `A atividade: <strong>${lembrete.atividade}</strong> será notificada em: <strong>${lembrete.tempoMinuto} minutos</strong>`;
+
+    let icon = document.createElement("button");
+    icon.innerHTML = '<i class="fa-solid fa-trash"></i>';
+    icon.classList.add("icon-lembrete");
+
+    const textoLembrete = document.createElement("li");
+    textoLembrete.classList.add("lembreteAtivo");
+    textoLembrete.innerText = `A atividade: ${lembrete.atividade} precisa ser feita agora!`;
+    // // Impedir que o lembrete inicial seja removido
+    // if (lembrete.id !== 1) {
+    //   icon.addEventListener("click", () => {
+    //     container.remove();
+    //     arrayLembretes.lembretes = arrayLembretes.lembretes.filter(
+    //       (l) => l.id !== lembrete.id
+    //     );
+
+    //     if (arrayLembretes.lembretes.length === 1) {
+    //       document.getElementById("lembretesAdicionados").innerHTML = "";
+    //     }
+    //   });
+    // } else {
+    //   icon.style.display = "none"; // Oculta o botão de remoção para o lembrete inicial
+    // }
+
+    container.appendChild(li);
+    container.appendChild(icon);
+    lembreteContainer.appendChild(container);
+  });
+}
+
+// Renderiza o lembrete inicial ao carregar a página
+renderizarLembretes();
 
 document
   .getElementById("meuFormulario")
@@ -29,10 +79,10 @@ document
       arrayLembretes.lembretes.push(novoLembrete);
     }
 
-    const titleLembretesAdicionados = document.getElementById(
-      "lembretesAdicionados"
-    );
-    titleLembretesAdicionados.innerHTML = "Lembretes adicionados:";
+    // const titleLembretesAdicionados = document.getElementById(
+    //   "lembretesAdicionados"
+    // );
+    // titleLembretesAdicionados.innerHTML = "Lembretes adicionados:";
 
     let container = document.createElement("div");
     container.classList.add("lembrete-container");
@@ -66,8 +116,8 @@ document
     const tmpMilisegundo = novoLembrete.tempoMinuto * 60000;
 
     alertaLembrete(() => {
-      const reminder = document.getElementById("reminder");
-      reminder.innerText = "Lembretes Ativos:";
+      // const reminder = document.getElementById("reminder");
+      // reminder.innerText = "Lembretes Ativos:";
 
       const lembreteElement = document.getElementById("lembrete");
 
