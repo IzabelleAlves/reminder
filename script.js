@@ -3,58 +3,36 @@ const alertaLembrete = (callback, delay) => {
 };
 
 let arrayLembretes = {
-  lembretes: [
-    {
-      id: 1,
-      atividade: "Correr",
-      tempoMinuto: 10,
-      isCompleted: false,
-    },
-  ],
+  lembretes: [{}],
 };
 
-function renderizarLembretes() {
-  const lembreteContainer = document.getElementById("lembreteAddRenderizado");
-  lembreteContainer.innerHTML = ""; // Limpa os lembretes antes de renderizar
+function renderizarLembreteExemplo() {
+  // Lembretes Adicionados
+  let container = document.createElement("div");
+  container.classList.add("lembrete-container");
 
-  arrayLembretes.lembretes.forEach((lembrete) => {
-    let container = document.createElement("div");
-    container.classList.add("lembrete-container");
+  let li = document.createElement("li");
+  li.innerHTML = `A atividade: <strong>Correr</strong> será notificada em: <strong>10 minutos</strong>`;
 
-    let li = document.createElement("li");
-    li.innerHTML = `A atividade: <strong>${lembrete.atividade}</strong> será notificada em: <strong>${lembrete.tempoMinuto} minutos</strong>`;
+  let icon = document.createElement("button");
+  icon.innerHTML = '<i class="fa-solid fa-trash"></i>';
+  icon.classList.add("icon-lembrete");
 
-    let icon = document.createElement("button");
-    icon.innerHTML = '<i class="fa-solid fa-trash"></i>';
-    icon.classList.add("icon-lembrete");
+  // Lembretes Ativos
+  const lembreteElement = document.getElementById("lembrete");
 
-    const textoLembrete = document.createElement("li");
-    textoLembrete.classList.add("lembreteAtivo");
-    textoLembrete.innerText = `A atividade: ${lembrete.atividade} precisa ser feita agora!`;
-    // // Impedir que o lembrete inicial seja removido
-    // if (lembrete.id !== 1) {
-    //   icon.addEventListener("click", () => {
-    //     container.remove();
-    //     arrayLembretes.lembretes = arrayLembretes.lembretes.filter(
-    //       (l) => l.id !== lembrete.id
-    //     );
+  const textoLembrete = document.createElement("li");
+  textoLembrete.classList.add("lembreteAtivo");
+  textoLembrete.innerHTML = `A atividade: <strong>Correr</strong> precisa ser feita agora!`;
+  textoLembrete.classList.add("isCompleted");
 
-    //     if (arrayLembretes.lembretes.length === 1) {
-    //       document.getElementById("lembretesAdicionados").innerHTML = "";
-    //     }
-    //   });
-    // } else {
-    //   icon.style.display = "none"; // Oculta o botão de remoção para o lembrete inicial
-    // }
-
-    container.appendChild(li);
-    container.appendChild(icon);
-    lembreteContainer.appendChild(container);
-  });
+  lembreteElement.appendChild(textoLembrete);
+  container.appendChild(li);
+  container.appendChild(icon);
+  document.getElementById("lembreteAddRenderizado").appendChild(container);
 }
 
-// Renderiza o lembrete inicial ao carregar a página
-renderizarLembretes();
+renderizarLembreteExemplo();
 
 document
   .getElementById("meuFormulario")
@@ -79,11 +57,6 @@ document
       arrayLembretes.lembretes.push(novoLembrete);
     }
 
-    // const titleLembretesAdicionados = document.getElementById(
-    //   "lembretesAdicionados"
-    // );
-    // titleLembretesAdicionados.innerHTML = "Lembretes adicionados:";
-
     let container = document.createElement("div");
     container.classList.add("lembrete-container");
 
@@ -99,11 +72,6 @@ document
       arrayLembretes.lembretes = arrayLembretes.lembretes.filter(
         (lembrete) => lembrete.id !== novoLembrete.id
       );
-
-      if (arrayLembretes.lembretes.length === 0) {
-        titleLembretesAdicionados.innerHTML = "";
-        arrayLembretes.lembretes = [{}];
-      }
     });
 
     container.appendChild(li);
@@ -128,7 +96,7 @@ document
       if (lembreteAtivo) {
         const textoLembrete = document.createElement("li");
         textoLembrete.classList.add("lembreteAtivo");
-        textoLembrete.innerText = `A atividade: ${lembreteAtivo.atividade} precisa ser feita agora!`;
+        textoLembrete.innerHTML = `A atividade: <strong>${lembreteAtivo.atividade}</strong> precisa ser feita agora!`;
 
         if (lembreteAtivo.isCompleted) {
           textoLembrete.classList.add("isCompleted");
