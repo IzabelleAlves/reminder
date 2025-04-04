@@ -132,7 +132,12 @@ li {
   transform: scale(1.1);
   transition: transform 0.2s ease-in-out;
 }
+
+.lembreteAtivo {
+  cursor: pointer;
+}
+
 .isCompleted {
   text-decoration: line-through;
-  color: gray;
+  color: black;
 }
