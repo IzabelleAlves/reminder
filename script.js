@@ -95,7 +95,7 @@ document
     }, tmpMilisegundo);
   });
 
-function ajustarFontesLembretes() {
+function responsividade() {
   let larguraTela = window.innerWidth;
   let lembretes = document.querySelectorAll("#lembreteAddRenderizado li");
 
@@ -110,5 +110,5 @@ function ajustarFontesLembretes() {
   });
 }
 
-ajustarFontesLembretes();
+responsividade();
 window.addEventListener("resize", ajustarFontesLembretes);
